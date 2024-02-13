@@ -4,4 +4,8 @@ export const strings = {
     token: "Medium_Token",
     publicationID: "Publication_ID",
   },
+  devto: {
+    token: "DevTo_Token",
+    userID: "DevTo_User_ID",
+  },
 };

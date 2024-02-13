@@ -6,12 +6,12 @@ import { strings } from "../Utils/Strings";
 import { getUsersPublications } from "../API/medium-api/get_users_publications";
 
 const Medium = () => {
-  const { userID: mediumUserID } = strings.medium;
+  const { userID } = strings.medium;
 
   // getMediumUserDetails()
   //   .then((res) => {
   //     console.log("Success: ", res.data);
-  //     save(mediumUserID, res.data.id);
+  //     save(userID, res.data.id);
   //   })
   //   .catch((err) => {
   //     console.log("Error: ", err);

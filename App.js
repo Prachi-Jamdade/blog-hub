@@ -3,15 +3,14 @@ import { StyleSheet, Text, View } from "react-native";
 import { MEDIUM_TOKEN } from "react-native-dotenv";
 import Medium from "./Components/Medium";
 import { getValueFor } from "./Utils/handleValues";
+import DevTo from "./Components/DevTo";
 
 export default function App() {
-  const token = MEDIUM_TOKEN;
-  console.log("TOKEN", token);
-
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Medium />
+      <DevTo />
+      {/* <Medium /> */}
     </View>
   );
 }

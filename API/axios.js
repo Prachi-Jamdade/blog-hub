@@ -1,5 +1,5 @@
 import axios from "axios";
-import { REACT_APP_MEDIUM_TOKEN } from "react-native-dotenv";
+import { MEDIUM_TOKEN, DEVTO_TOKEN } from "react-native-dotenv";
 const mediumBaseURL = "https://api.medium.com/v1";
 const devToBaseURL = "https://dev.to/api";
 const hashNodeBaseURL = "https://api.hashnode.com";
@@ -11,7 +11,7 @@ const hashNodeAPI = axios.create({ baseURL: hashNodeBaseURL });
 const getMediumAPIWithToken = async () => {
   const mediumAPIWithToken = axios.create({ baseURL: mediumBaseURL });
   mediumAPIWithToken.interceptors.request.use(async (req) => {
-    const mediumToken = REACT_APP_MEDIUM_TOKEN;
+    const mediumToken = MEDIUM_TOKEN;
     req.headers.Authorization = `Bearer ${mediumToken}`;
     return req;
   });
@@ -19,4 +19,15 @@ const getMediumAPIWithToken = async () => {
   return mediumAPIWithToken;
 };
 
-export { getMediumAPIWithToken, mediumAPI };
+const getDevToAPIWithAPIKey = async () => {
+  const devToAPIWithToken = axios.create({ baseURL: devToBaseURL });
+  devToAPIWithToken.interceptors.request.use(async (req) => {
+    const devToToken = DEVTO_TOKEN;
+    req.headers["Api-Key"] = devToToken;
+    return req;
+  });
+
+  return devToAPIWithToken;
+};
+
+export { getMediumAPIWithToken, mediumAPI, devToAPI, getDevToAPIWithAPIKey };
