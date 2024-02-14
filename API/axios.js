@@ -1,12 +1,12 @@
 import axios from "axios";
-import { MEDIUM_TOKEN, DEVTO_TOKEN } from "react-native-dotenv";
+import { MEDIUM_TOKEN, DEVTO_TOKEN, HASHNODE_TOKEN } from "react-native-dotenv";
 const mediumBaseURL = "https://api.medium.com/v1";
 const devToBaseURL = "https://dev.to/api";
-const hashNodeBaseURL = "https://api.hashnode.com";
+const hashnodeBaseURL = "https://gql.hashnode.com";
 
 const mediumAPI = axios.create({ baseURL: mediumBaseURL });
 const devToAPI = axios.create({ baseURL: devToBaseURL });
-const hashNodeAPI = axios.create({ baseURL: hashNodeBaseURL });
+const hashnodeAPI = axios.create({ baseURL: hashnodeBaseURL });
 
 const getMediumAPIWithToken = async () => {
   const mediumAPIWithToken = axios.create({ baseURL: mediumBaseURL });
@@ -30,4 +30,21 @@ const getDevToAPIWithAPIKey = async () => {
   return devToAPIWithToken;
 };
 
-export { getMediumAPIWithToken, mediumAPI, devToAPI, getDevToAPIWithAPIKey };
+const getHashnodeAPIWithToken = async () => {
+  const hashnodeAPIWithToken = axios.create({ baseURL: hashnodeBaseURL });
+  hashnodeAPIWithToken.interceptors.request.use(async (req) => {
+    const hashnodeToken = HASHNODE_TOKEN;
+    console.log("TOKEN", hashnodeToken);
+    req.headers.Authorization = `Bearer ${hashnodeToken}`;
+    return req;
+  });
+};
+
+export {
+  getMediumAPIWithToken,
+  mediumAPI,
+  devToAPI,
+  getDevToAPIWithAPIKey,
+  hashnodeAPI,
+  getHashnodeAPIWithToken,
+};

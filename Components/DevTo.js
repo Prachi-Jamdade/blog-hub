@@ -16,7 +16,7 @@ const DevTo = () => {
   //       console.log("Error: ", err);
   //     });
 
-  updateArticle().then(() => {});
+  // updateArticle().then(() => {});
   return <View></View>;
 };
 
