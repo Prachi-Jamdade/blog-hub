@@ -4,7 +4,7 @@ import { getDevToAPIWithAPIKey } from "../axios";
 async function createDevToPost(
   title,
   published,
-  content,
+  body_markdown,
   tags,
   series,
   main_image,
@@ -15,7 +15,7 @@ async function createDevToPost(
     article: {
       title: title,
       published: published,
-      content: content,
+      body_markdown: body_markdown,
       tags: tags,
       series: series,
       main_image: main_image,
